@@ -1,0 +1,6 @@
+- install FOS rest bundle 
+composer require friendsofsymfony/rest-bundle
+
+- config.yaml
+    clé: fos_rest
+

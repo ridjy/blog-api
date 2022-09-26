@@ -7,6 +7,7 @@ fos_rest:
     formats: { json: true, xml: false, rss: false }
   serializer:
     serialize_null: true
+# serialize_null si l'attribut est null il sera quand même sérialisé; donc true ici
 
 sensio_framework_extra:
   view: { annotations: false }
