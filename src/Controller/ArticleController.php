@@ -8,6 +8,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use FOS\RestBundle\Controller\Annotations\Get;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class ArticleController extends AbstractController
 {
@@ -22,15 +25,14 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/articles/{id}", name="article_show")
+     * @Get(
+     *     path = "/articles/{id}",
+     *     name = "app_article_show",
+     *     requirements = {"id"="\d+"}
+     * )
      */
     public function showAction(Article $article,SerializerInterface $serializer)
     {
-        /*$article = new Article();
-        $article
-            ->setTitle('Mon premier article')
-            ->setContent('Le contenu de mon article.')
-        ;*/
         $data = $serializer->serialize($article, 'json');
 
         $response = new Response($data);
@@ -53,6 +55,19 @@ class ArticleController extends AbstractController
         $em->flush();
 
         return new Response('', Response::HTTP_CREATED);
+    }
+
+    /**
+     * @Rest\Post("/api/articles_rest")
+     * @Rest\View(StatusCode = 201)
+     * @ParamConverter("article", converter="fos_rest.request_body")
+     */
+    public function createActionRest(Article $article)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($article);
+        $em->flush();
+        return new Response('OK', Response::HTTP_CREATED);
     }
 
     /**

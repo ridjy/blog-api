@@ -8,3 +8,5 @@ composer require friendsofsymfony/rest-bundle
 
 voir la configuration du bundle
 php bin/console config:dump-reference fos_rest
+config se trouve ici
+config\packages\fos_rest.yaml

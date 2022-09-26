@@ -4,3 +4,22 @@ composer require friendsofsymfony/rest-bundle
 - config.yaml
     clé: fos_rest
 
+http://localhost:8000/articles/1
+get article soit géré par une route ou soit par l'annotation de FOS rest_bundle
+
+- body converter pour créer une ressource 
+JSON à POSTER
+{
+	"title": "Le titre de mon article ",
+	"content": "Le contenu de mon article.",
+	"author": {
+		"fullname": "Sarah Khalil",
+		"biography": "Ma biographie."
+	}
+}
+
+http://localhost:8000/api/articles_rest
+il faut mettre dans la configuration la route /api/..
+
+- search service enabled (fos_rest en parametre)
+php bin/console debug:container fos_rest
