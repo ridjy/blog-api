@@ -11,8 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use FOS\RestBundle\Request\ParamFetcherInterface;
+use FOS\RestBundle\Controller\Annotations\QueryParam;
+use FOS\RestBundle\Controller\FOSRestController;
 
-class ArticleController extends AbstractController
+class ArticleController extends FOSRestController
 {
     /**
      * @Route("/article", name="app_article")
@@ -23,6 +26,36 @@ class ArticleController extends AbstractController
             'controller_name' => 'ArticleController',
         ]);
     }
+
+    /**
+     * @Rest\Get("/api/listarticles", name="app_article_list")
+     * @QueryParam(
+     *     name="order",
+     *     requirements="asc|desc",
+     *     default="asc",
+     *     description="Sort order (asc or desc)"
+     * )
+     */
+    public function listArticles(ParamFetcherInterface $paramFetcher)
+    {
+        //dump($paramFetcher->get('order'));
+    }
+
+    /**
+     * @Get("/api/searcharticles", name="app_article_searc")
+     * @RequestParam(
+     *     name="search",
+     *     requirements="[a-zA-Z0-9]",
+     *     default=null,
+     *     nullable=true
+     *     description="Search query to look for articles"
+     * )
+     */
+    public function searcAction($search)
+    {
+       //si param_fetcher_listener: force dans config alors on peut injecter directement comme $saerch
+    }
+
 
     /**
      * @Get(

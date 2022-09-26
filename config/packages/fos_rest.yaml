@@ -3,6 +3,7 @@ fos_rest:
   body_converter:
     enabled: true
   param_fetcher_listener: true
+  # si la valeur est à  force, nous sommes en mesure de recevoir les paramètres directement par leur nom
   allowed_methods_listener: true
   #  routing_loader: false
   view:

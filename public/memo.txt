@@ -23,3 +23,9 @@ il faut mettre dans la configuration la route /api/..
 
 - search service enabled (fos_rest en parametre)
 php bin/console debug:container fos_rest
+
+-QueryParams et les RequestParams.
+dans fos_rest.yaml 
+param_fetcher_listener: true
+  # si la valeur est à  force, nous sommes en mesure de recevoir les paramètres directement par leur nom dans le controller en injection de dépendance
+
