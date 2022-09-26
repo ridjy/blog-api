@@ -29,3 +29,7 @@ dans fos_rest.yaml
 param_fetcher_listener: true
   # si la valeur est à  force, nous sommes en mesure de recevoir les paramètres directement par leur nom dans le controller en injection de dépendance
 
+http://localhost:8000/api/author/list
+=> il faut indiquer le chemin et le type de retour dans la configuration pour ne pas avoir l'erreur 406 not acceptable
+
+

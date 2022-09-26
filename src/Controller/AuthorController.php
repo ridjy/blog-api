@@ -9,6 +9,9 @@ use App\Entity\Author;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Article;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations\Get;
+use FOS\RestBundle\Controller\Annotations as Rest;
 
 class AuthorController extends AbstractController
 {
@@ -45,6 +48,21 @@ class AuthorController extends AbstractController
         $em->flush();
 
         return new Response('', Response::HTTP_CREATED);
+    }
+
+    /**
+     * @Rest\Get("/api/author/list", name="app_author_list")
+     */
+    public function listAuthors(SerializerInterface $serializer)
+    {
+        $authors = $this->getDoctrine()->getRepository(Author::Class)->findAll();
+        
+        $data =  $serializer->serialize($authors, 'json');
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 }

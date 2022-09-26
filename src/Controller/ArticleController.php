@@ -13,9 +13,9 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
-use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
 
-class ArticleController extends FOSRestController
+class ArticleController extends AbstractController
 {
     /**
      * @Route("/article", name="app_article")
@@ -47,11 +47,11 @@ class ArticleController extends FOSRestController
      *     name="search",
      *     requirements="[a-zA-Z0-9]",
      *     default=null,
-     *     nullable=true
+     *     nullable=true,
      *     description="Search query to look for articles"
      * )
      */
-    public function searcAction($search)
+    public function searchAction($search)
     {
        //si param_fetcher_listener: force dans config alors on peut injecter directement comme $saerch
     }
