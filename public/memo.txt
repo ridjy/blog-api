@@ -33,3 +33,7 @@ http://localhost:8000/api/author/list
 => il faut indiquer le chemin et le type de retour dans la configuration pour ne pas avoir l'erreur 406 not acceptable
 
 
+- paginer les résultats de la requête 
+composer require babdev/pagerfanta-bundle
+https://www.babdev.com/open-source/packages/pagerfantabundle/docs/3.x/installation
+
