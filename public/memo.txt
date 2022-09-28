@@ -36,6 +36,8 @@ http://localhost:8000/api/author/list
 - paginer les résultats de la requête 
 composer require babdev/pagerfanta-bundle
 https://www.babdev.com/open-source/packages/pagerfantabundle/docs/3.x/installation
+le bundle est obsolète depuis symfony 5, il est préconisé de passer par API Platform 
 
+- validator
 
 

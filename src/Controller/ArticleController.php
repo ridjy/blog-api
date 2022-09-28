@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\Annotations\RequestParam;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ArticleController extends AbstractController
 {
@@ -95,8 +96,13 @@ class ArticleController extends AbstractController
      * @Rest\View(StatusCode = 201)
      * @ParamConverter("article", converter="fos_rest.request_body")
      */
-    public function createActionRest(Article $article)
+    public function createActionRest(Article $article, ValidatorInterface $validator)
     {
+        $errors = $validator->validate($article);
+
+        if (count($errors)) {
+            return new Response($errors,Response::HTTP_BAD_REQUEST);
+        }
         $em = $this->getDoctrine()->getManager();
         $em->persist($article);
         $em->flush();
