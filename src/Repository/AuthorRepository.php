@@ -7,8 +7,9 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
-use PagerFanta\Adapater\DoctrineORMAdapter;
-use PagerFanta\Pagerfanta;
+//use Doctrine\ORM\DoctrineORMAdapter;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Pagerfanta;
 
 /**
  * @extends ServiceEntityRepository<Author>
@@ -66,8 +67,7 @@ class AuthorRepository extends ServiceEntityRepository
         if (0 == $limit || 0 == $offset) {
             throw new \LogicException('$limit & $offstet must be greater than 0.');
         }
-        
-        $pager = new Pagerfanta(new DoctrineORMAdapter($qb));
+        $pager = new Pagerfanta(new QueryAdapter($qb));
         $currentPage = ceil(($offset + 1) / $limit);
         $pager->setCurrentPage($currentPage);
         $pager->setMaxPerPage((int) $limit);
