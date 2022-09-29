@@ -3,33 +3,35 @@
 namespace App\EventSubscriber;
 
 use App\Normalizer\NormalizerInterface;
-use JMS\Serializer\Serializer;
+use JMS\Serializer\SerializerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
+use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use App\Normalizer\NotFoundHttpExceptionNormalizer;
 
-class ExceptionListener implements EventSubscriberInterface
+class ExceptionListener extends NotFoundHttpExceptionNormalizer implements EventSubscriberInterface
 {
     private $serializer;
     private $normalizers;
 
-    public function __construct(Serializer $serializer)
+    public function __construct(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
     }
 
-    public function processException(GetResponseForExceptionEvent $event)
+    public function processException(ExceptionEvent $event)
     {
         $result = null;
-
-        foreach ($this->normalizers as $normalizer) {
-            if ($normalizer->supports($exception)) {
-                $result = $normalizer->normalize($event->getException());
+        //normalizer devrait être fourni par src\DependencyInjection\ExceptionNormalizerPass.php
+        //foreach ($this->normalizers as $normalizer) 
+        //{
+            //if ($normalizer->supports($exception)) {
+                $result = $this->normalize($event);
                 
-                break;
-            }
-        }
+               // break;
+            //}
+        //}
         
         if (null == $result) {
             $result['code'] = Response::HTTP_BAD_REQUEST;
