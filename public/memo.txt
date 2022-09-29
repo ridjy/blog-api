@@ -39,5 +39,9 @@ https://www.babdev.com/open-source/packages/pagerfantabundle/docs/3.x/installati
 le bundle est obsolète depuis symfony 5, il est préconisé de passer par API Platform 
 
 - validator
+composant deja avc SF puis dans les annotations Assert
 
+- listener 
+creation du service en charge de la serialisation du retour 
+creation d'un listener ecoutant kernel.exception appelant le service créé ci-dessus
 
