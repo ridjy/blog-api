@@ -60,7 +60,7 @@ class ArticleController extends AbstractController
 
     /**
      * @Get(
-     *     path = "/articles/{id}",
+     *     path = "api/articles/{id}",
      *     name = "app_article_show",
      *     requirements = {"id"="\d+"}
      * )
