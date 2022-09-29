@@ -49,3 +49,9 @@ creation d'un listener ecoutant kernel.exception appelant le service créé ci-d
 http://localhost:8000/api/articles/update/{id}
 - delete
 http://localhost:8000/api/article/delete/8
+
+
+- API autodecouvrable RESTful 
+cad mettre les liens permettant de manipuler la ressource dans les resultats de l'API
+l'élément _links contient tous les liens que l'utilisateur est en mesure d'utiliser, en rapport avec la ressource ;
+l'élément _embedded contient tous les éléments connexes à la ressource, ici, l'auteur.

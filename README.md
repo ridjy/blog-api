@@ -10,4 +10,8 @@ php bin/console config:dump-reference fos_rest
 config se trouve ici
 config\packages\fos_rest.yaml
 
+#pagination du resultat
 composer require babdev/pagerfanta-bundle
+
+#API autodecouvrable RESTful
+composer require willdurand/hateoas-bundle
