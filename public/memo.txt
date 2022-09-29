@@ -45,3 +45,7 @@ composant deja avc SF puis dans les annotations Assert
 creation du service en charge de la serialisation du retour 
 creation d'un listener ecoutant kernel.exception appelant le service créé ci-dessus
 
+- update
+http://localhost:8000/api/articles/update/{id}
+- delete
+http://localhost:8000/api/article/delete/8

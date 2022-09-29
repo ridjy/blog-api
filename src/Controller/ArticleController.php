@@ -123,4 +123,49 @@ class ArticleController extends AbstractController
         return $response;
     }
 
+    /**
+     * @Rest\View(StatusCode = 200)
+     * @Rest\Put(
+     *     path = "api/articles/update/{id}",
+     *     name = "app_article_update",
+     *     requirements = {"id"="\d+"}
+     * )
+     */
+    public function updateAction(Article $article, ValidatorInterface $validator,Request $request, SerializerInterface $serializer)
+    {
+        $data = $request->getContent();
+        $newArticle = $serializer->deserialize($data, 'App\Entity\Article', 'json');
+
+        /*$violations = $validator->validate($article);
+        if (count($violations)) {
+            $message = 'The JSON sent contains invalid data. Here are the errors you need to correct: ';
+            foreach ($violations as $violation) {
+                $message .= sprintf("Field %s: %s ", $violation->getPropertyPath(), $violation->getMessage());
+            }
+
+            throw new ResourceValidationException($message);
+        }*/
+        $article->setTitle($newArticle->getTitle());
+        $article->setContent($newArticle->getContent());
+
+        $this->getDoctrine()->getManager()->flush();
+
+        return new Response('OK', Response::HTTP_CREATED);
+    }
+
+    /**
+     * @Rest\View(StatusCode = 204)
+     * @Rest\Delete(
+     *     path = "api/article/delete/{id}",
+     *     name = "app_article_delete",
+     *     requirements = {"id"="\d+"}
+     * )
+     */
+    public function deleteAction(Article $article)
+    {
+        $this->getDoctrine()->getManager()->remove($article);
+        $this->getDoctrine()->getManager()->flush();
+        return new Response('DELETED', Response::HTTP_NO_CONTENT);
+    }
+
 }//end controller
