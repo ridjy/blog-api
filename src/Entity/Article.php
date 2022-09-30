@@ -68,6 +68,7 @@ class Article
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Serializer\Since("2.0")
      * @Serializer\Expose
      */
     private $shortDescription;

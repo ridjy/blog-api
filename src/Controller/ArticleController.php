@@ -110,7 +110,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/liste", name="article_list", methods={"GET"})
+     * @Route("/api/article/liste", name="article_list", methods={"GET"})
      */
     public function listAction(SerializerInterface $serializer)
     {

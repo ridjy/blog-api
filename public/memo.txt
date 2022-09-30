@@ -60,3 +60,15 @@ Hateoas\Representation\PaginatedRepresentation
 utiliser ce bundle également pour la pagination
 
 - versionnement de l'API
+bin/console doctrine:schema:update --force //maj db sans migration
+
+@Serializer\Since("2.0") => indique que la ppté n'est disponible que depuis la version 2.0
+@Until("2.0")- La propriété est disponible jusque la version 2.0.0 de l'API.
+
+ajouter le config versionnig true dans l'API
+rappel : les configs sont ici ./package/fos_rest.yaml 
+les versions dispo à déclarer dans le mimetype sous view
+
+test n envoya un header
+Accept  	value = application/json;version=1.0
+
