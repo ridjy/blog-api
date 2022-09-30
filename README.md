@@ -20,3 +20,6 @@ composer require willdurand/hateoas-bundle
 composer require csa/guzzle-bundle
 permet d'effectuer des requetes http
 recettes dans config guzzle.yml
+
+##documentation de notre API
+composer require nelmio/api-doc-bundle

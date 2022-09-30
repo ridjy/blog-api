@@ -92,3 +92,8 @@ Etape 3 : Ajouter les informations météo à chaque fois que l'on récupère le
 Add public true to the service on symfony 4
 
 - format listener commenté pour le moment dans la config fos_rest.yaml pour afficher le frontend
+
+- Documentation 
+composer require nelmio/api-doc-bundle
+la route est créé automatiquement
+/api/doc.json
