@@ -67,6 +67,12 @@ class Article
     private $content;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Serializer\Expose
+     */
+    private $shortDescription;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Author", cascade={"all"}, fetch="EAGER")
      */
     private $author;
@@ -108,5 +114,17 @@ class Article
     public function setAuthor(Author $author)
     {
         $this->author = $author;
+    }
+
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(?string $shortDescription): self
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
     }
 }

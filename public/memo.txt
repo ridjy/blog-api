@@ -58,3 +58,5 @@ l'élément _embedded contient tous les éléments connexes à la ressource, ici
 
 Hateoas\Representation\PaginatedRepresentation
 utiliser ce bundle également pour la pagination
+
+- versionnement de l'API
