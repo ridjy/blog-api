@@ -15,3 +15,7 @@ composer require babdev/pagerfanta-bundle
 
 #API autodecouvrable RESTful
 composer require willdurand/hateoas-bundle
+
+##communiquer avec d'autres API
+composer require csa/guzzle-bundle
+permet d'effectuer des requetes http

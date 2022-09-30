@@ -2,6 +2,18 @@
     "babdev/pagerfanta-bundle": {
         "version": "v3.7.0"
     },
+    "csa/guzzle-bundle": {
+        "version": "3.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "37c8c8a6c9b4365529a27975dced0589fea4bb48"
+        },
+        "files": [
+            "./config/packages/csa_guzzle.yaml"
+        ]
+    },
     "doctrine/annotations": {
         "version": "1.13",
         "recipe": {

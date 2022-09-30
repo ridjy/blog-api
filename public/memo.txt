@@ -72,3 +72,4 @@ les versions dispo à déclarer dans le mimetype sous view
 test n envoya un header
 Accept  	value = application/json;version=1.0
 
+- communiquer avec une ai existante
