@@ -30,6 +30,14 @@ services:
     tags:
       - { name: app.normalizer }
 
+  app.weather:
+    class: App\Weather\Weather
+    arguments:
+      - "@csa_guzzle.client.weather"
+      - "@jms_serializer"
+      - "%env(WEATHER_API_KEY)%"
+    public: true
+
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
   App\:

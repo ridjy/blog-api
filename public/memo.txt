@@ -72,4 +72,21 @@ les versions dispo à déclarer dans le mimetype sous view
 test n envoya un header
 Accept  	value = application/json;version=1.0
 
-- communiquer avec une ai existante
+- communiquer avec une api existante
+https://openweathermap.org/appid
+creer une cle ici et l'envoyer en params GET pour pouvoir communiquer
+http://api.openweathermap.org/data/2.5/weather?q=Paris&APPID={keyid}
+
+Étape 1 : créer un client HTTP dans la config 
+config\packages\csa_guzzle.yaml
+
+Etape 2 : creation service weather
+declarer le service dans services.yaml
+
+Etape 3 : Ajouter les informations météo à chaque fois que l'on récupère les informations d'un article
+@Hateoas\Relation(
+ *     "weather",
+ *     embedded = @Hateoas\Embedded("expr(service('app.weather').getCurrent())")
+ * )
+
+Add public true to the service on symfony 4

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 use Hateoas\Configuration\Annotation as Hateoas;
+use App\Weather\Weather;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -40,6 +41,11 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @Hateoas\Relation(
  *     "author",
  *     embedded = @Hateoas\Embedded("expr(object.getAuthor())")
+ * )
+ * 
+ * @Hateoas\Relation(
+ *     "weather",
+ *     embedded = @Hateoas\Embedded("expr(service('app.weather').getCurrent())")
  * )
  * 
  */
