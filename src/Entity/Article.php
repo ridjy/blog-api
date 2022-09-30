@@ -80,7 +80,7 @@ class Article
     private $shortDescription;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Author", cascade={"all"}, fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Author", cascade={"all"}, fetch="LAZY")
      */
     private $author;
 

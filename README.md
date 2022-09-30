@@ -1,6 +1,6 @@
 # blog-api
 
-API symfony
+API symfony 5.4
 composer require jms/serializer-bundle
 php bin/console doctrine:database:create && php bin/console doctrine:schema:create
 
