@@ -96,4 +96,9 @@ Add public true to the service on symfony 4
 - Documentation 
 composer require nelmio/api-doc-bundle
 la route est créé automatiquement
-/api/doc.json
+http://localhost:8000/api/doc.json
+
+bin/console api:doc:dump --format=json > doc.json
+bin/console api:doc:dump --format=markdown > doc.md
+bin/console api:doc:dump --format=html > doc.html
+exporter la doc de l'api
